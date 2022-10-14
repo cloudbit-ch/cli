@@ -2,7 +2,7 @@
 
 This command line interface serves as an additional frontend for the [Cloudbit](https://my.cloudbit.ch) platform.
 
-![Build](https://github.com/cloudbit-ch/cli/workflows/Build/badge.svg)
+![Tests](https://github.com/cloudbit-ch/cli/workflows/test/badge.svg)
 
 ## Installation
 
