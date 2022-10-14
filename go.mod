@@ -1,4 +1,4 @@
-module github.com/flowswiss/cli/v2
+module github.com/cloudbit-ch/cli/v2
 
 go 1.18
 

@@ -6,23 +6,23 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/flowswiss/cli/v2/internal/commands"
-	"github.com/flowswiss/cli/v2/pkg/api/compute"
-	"github.com/flowswiss/cli/v2/pkg/filter"
+	"github.com/cloudbit-ch/cli/v2/internal/commands"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/compute"
+	"github.com/cloudbit-ch/cli/v2/pkg/filter"
 )
 
-func ImageCommand() *cobra.Command {
+func ImageCommand(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "image",
 		Aliases: []string{"images"},
 		Short:   "Manage images",
 		Example: commands.FormatExamples(fmt.Sprintf(`
-	  		# List all available images
-			%[1]s compute image list
-		`, commands.Name)),
+      # List all available images
+      %[1]s compute image list
+		`, app.Name)),
 	}
 
-	commands.Add(cmd, &imageListCommand{})
+	commands.Add(app, cmd, &imageListCommand{})
 
 	return cmd
 }
@@ -52,7 +52,7 @@ func (i *imageListCommand) CompleteArg(cmd *cobra.Command, args []string, toComp
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (i *imageListCommand) Build() *cobra.Command {
+func (i *imageListCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "list",
 		Aliases:           []string{"show", "ls", "get"},

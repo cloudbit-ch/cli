@@ -10,7 +10,7 @@ import (
 	"github.com/flowswiss/goclient"
 	"github.com/flowswiss/goclient/compute"
 
-	"github.com/flowswiss/cli/v2/pkg/api/common"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/common"
 )
 
 const (

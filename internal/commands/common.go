@@ -8,17 +8,17 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/flowswiss/cli/v2/pkg/api/common"
-	"github.com/flowswiss/cli/v2/pkg/console"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/common"
+	"github.com/cloudbit-ch/cli/v2/pkg/console"
 )
 
 type CommandBuilder interface {
-	Build() *cobra.Command
+	Build(app Application) *cobra.Command
 }
 
-func Add(parent *cobra.Command, builder ...CommandBuilder) {
+func Add(app Application, parent *cobra.Command, builder ...CommandBuilder) {
 	for _, b := range builder {
-		parent.AddCommand(b.Build())
+		parent.AddCommand(b.Build(app))
 	}
 }
 

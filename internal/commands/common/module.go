@@ -3,18 +3,18 @@ package common
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/flowswiss/cli/v2/internal/commands"
-	"github.com/flowswiss/cli/v2/pkg/api/common"
-	"github.com/flowswiss/cli/v2/pkg/filter"
+	"github.com/cloudbit-ch/cli/v2/internal/commands"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/common"
+	"github.com/cloudbit-ch/cli/v2/pkg/filter"
 )
 
-func ModuleCommand() *cobra.Command {
+func Module(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "module",
 		Short: "Manage modules",
 	}
 
-	commands.Add(cmd, &moduleListCommand{})
+	commands.Add(app, cmd, &moduleListCommand{})
 
 	return cmd
 }
@@ -40,7 +40,7 @@ func (m *moduleListCommand) CompleteArg(cmd *cobra.Command, args []string, toCom
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (m *moduleListCommand) Build() *cobra.Command {
+func (m *moduleListCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "list",
 		Short:             "List available modules",

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"github.com/flowswiss/cli/v2/pkg/console"
+	"github.com/cloudbit-ch/cli/v2/pkg/console"
 )
 
 var _ http.RoundTripper = (*dryRunTransport)(nil)

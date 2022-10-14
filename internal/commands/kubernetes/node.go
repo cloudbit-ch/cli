@@ -1,4 +1,4 @@
-package compute
+package kubernetes
 
 import (
 	"context"
@@ -6,25 +6,25 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/flowswiss/cli/v2/internal/commands"
-	"github.com/flowswiss/cli/v2/pkg/api/kubernetes"
-	"github.com/flowswiss/cli/v2/pkg/filter"
+	"github.com/cloudbit-ch/cli/v2/internal/commands"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/kubernetes"
+	"github.com/cloudbit-ch/cli/v2/pkg/filter"
 )
 
-func NodeCommand() *cobra.Command {
+func NodeCommand(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "node",
 		Aliases: []string{"nodes"},
 		Short:   "Manage your cluster nodes",
 	}
 
-	commands.Add(cmd,
+	commands.Add(app, cmd,
 		&nodeListCommand{},
 		&nodeDeleteCommand{},
 	)
 
 	cmd.AddCommand(
-		NodeActionCommand(),
+		NodeActionCommand(app),
 	)
 
 	return cmd
@@ -60,7 +60,7 @@ func (n *nodeListCommand) CompleteArg(cmd *cobra.Command, args []string, toCompl
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (n *nodeListCommand) Build() *cobra.Command {
+func (n *nodeListCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "list CLUSTER",
 		Aliases:           []string{"show", "ls", "get"},
@@ -121,7 +121,7 @@ func (n *nodeDeleteCommand) CompleteArg(cmd *cobra.Command, args []string, toCom
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (n *nodeDeleteCommand) Build() *cobra.Command {
+func (n *nodeDeleteCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "delete CLUSTER NODE",
 		Short:             "Delete node",

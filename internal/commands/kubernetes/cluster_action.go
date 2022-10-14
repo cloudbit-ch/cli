@@ -1,23 +1,23 @@
-package compute
+package kubernetes
 
 import (
 	"fmt"
 
 	"github.com/spf13/cobra"
 
-	"github.com/flowswiss/cli/v2/internal/commands"
-	"github.com/flowswiss/cli/v2/pkg/api/kubernetes"
-	"github.com/flowswiss/cli/v2/pkg/filter"
+	"github.com/cloudbit-ch/cli/v2/internal/commands"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/kubernetes"
+	"github.com/cloudbit-ch/cli/v2/pkg/filter"
 )
 
-func ClusterActionCommand() *cobra.Command {
+func ClusterActionCommand(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "action",
 		Aliases: []string{"actions"},
 		Short:   "Manage your kubernetes cluster actions",
 	}
 
-	commands.Add(cmd,
+	commands.Add(app, cmd,
 		&clusterActionListCommand{},
 		&clusterActionRunCommand{},
 	)
@@ -55,7 +55,7 @@ func (c *clusterActionListCommand) CompleteArg(cmd *cobra.Command, args []string
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (c *clusterActionListCommand) Build() *cobra.Command {
+func (c *clusterActionListCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "list CLUSTER",
 		Aliases:           []string{"show", "ls", "get"},
@@ -130,7 +130,7 @@ func (c *clusterActionRunCommand) CompleteArg(cmd *cobra.Command, args []string,
 	return nil, cobra.ShellCompDirectiveNoFileComp
 }
 
-func (c *clusterActionRunCommand) Build() *cobra.Command {
+func (c *clusterActionRunCommand) Build(app commands.Application) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:               "run CLUSTER ACTION",
 		Short:             "Run action",

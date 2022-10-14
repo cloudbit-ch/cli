@@ -8,7 +8,7 @@ import (
 	"github.com/flowswiss/goclient"
 	"github.com/flowswiss/goclient/kubernetes"
 
-	"github.com/flowswiss/cli/v2/pkg/api/common"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/common"
 )
 
 type Node kubernetes.Node

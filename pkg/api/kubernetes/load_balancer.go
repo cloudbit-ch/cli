@@ -6,7 +6,7 @@ import (
 	"github.com/flowswiss/goclient"
 	"github.com/flowswiss/goclient/kubernetes"
 
-	"github.com/flowswiss/cli/v2/pkg/api/compute"
+	"github.com/cloudbit-ch/cli/v2/pkg/api/compute"
 )
 
 type LoadBalancer = compute.LoadBalancer

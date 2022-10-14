@@ -27,5 +27,5 @@ jobs:
       - name: run tests
         run: go test -v ./...
 
-      - name: build binaries
-        run: make all
+      - name: build binary
+        run: go build ./cmd/cloudbit

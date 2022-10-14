@@ -8,8 +8,8 @@ import (
 	"github.com/flowswiss/goclient"
 	"github.com/flowswiss/goclient/common"
 
-	"github.com/flowswiss/cli/v2/pkg/console"
-	"github.com/flowswiss/cli/v2/pkg/filter"
+	"github.com/cloudbit-ch/cli/v2/pkg/console"
+	"github.com/cloudbit-ch/cli/v2/pkg/filter"
 )
 
 var (
